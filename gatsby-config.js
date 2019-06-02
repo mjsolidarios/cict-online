@@ -2,9 +2,9 @@ var proxy = require('http-proxy-middleware')
 
 module.exports = {
   siteMetadata: {
-    title: 'CICT Online',
+    title: 'WVSU-CICT Online',
     description:
-      'Official website of the college.',
+      'Official website of the College of ICT.',
   },
   plugins: [
     'gatsby-plugin-react-helmet',

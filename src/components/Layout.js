@@ -1,5 +1,6 @@
 import { Layout } from 'antd';
 import 'antd/dist/antd.less';
+import 'react-typist/dist/Typist.css'
 import '../app.less'
 import React from 'react';
 import Helmet from 'react-helmet';

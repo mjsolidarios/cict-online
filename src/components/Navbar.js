@@ -17,7 +17,7 @@ const Navbar = class extends React.Component {
 
   render() {
     return (
-      <Header style={{backgroundColor:'#fff'}}>
+      <Header style={{backgroundColor:'#fff', padding: 0}}>
       <Link to="/">
       <img style={{
         width: '120px',
