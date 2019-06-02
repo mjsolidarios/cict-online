@@ -1,6 +1,6 @@
 import React from 'react'
-import { Layout, Menu, Breadcrumb } from 'antd';
-import { Link } from 'gatsby'
+import { Layout, Menu, Breadcrumb, Icon, Badge } from 'antd';
+import { Link, navigate } from 'gatsby'
 import logo from '../img/brandicon.svg'
 
 const { Header, Content } = Layout;
@@ -32,7 +32,7 @@ const Navbar = class extends React.Component {
         // defaultSelectedKeys={['1']}
         style={{ lineHeight: '64px'}}
       >
-        <Menu.Item key="1">News</Menu.Item>
+        <Menu.Item key="1" onClick={()=>navigate('blog')}><Icon type="notification" /><Badge dot>Updates </Badge></Menu.Item>
       </Menu>
     </Header>
     )

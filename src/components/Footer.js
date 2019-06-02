@@ -12,7 +12,9 @@ const {Footer} = Layout
 const index = class extends React.Component {
   render() {
     return (
-      <Footer style={{ textAlign: 'center' }}>{`</> with <3 by CICTzens | 2016 - Present`}</Footer>
+      <Footer style={{ backgroundColor: '#222B2F', color: 'rgba(255,255,255,0.5)' }}>
+      <small>{`</> with <3 by CICTzens | 2016 - Present`}</small>
+      </Footer>
     )
   }
 }

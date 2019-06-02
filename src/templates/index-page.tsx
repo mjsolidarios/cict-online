@@ -180,10 +180,10 @@ export const IndexPageTemplate = ({
     <div style={{ margin: '0 1rem' }}>
       <div style={{ padding: '2rem 1rem' }}>
         {/* <img style={{ width: 'auto', height: '150px', margin: '1rem auto' }} src={collegeLogo} />         */}
-        <Title level={2}><Typist cursor={cursorOptions}>{heading}</Typist></Title>
+        <Title level={2}><Typist cursor={cursorOptions}>{`> ${heading}`}</Typist></Title>
         <p>{subheading}</p>
         <p>{goal}</p>
-        <Button type="primary" href="https://medium.com/cictwvsu-online/our-story-87a461c14ab" target="_blank">Learn More</Button>
+        <Button size="large" type="primary" href="https://medium.com/cictwvsu-online/our-story-87a461c14ab" target="_blank">Learn More</Button>
         <Divider />
         <Title level={3}>
           <Typist startDelay={2000} cursor={cursorOptions}>
@@ -196,7 +196,7 @@ export const IndexPageTemplate = ({
           renderItem={item => (
             <List.Item>
               <List.Item.Meta
-                avatar={<img style={{ height: '70px', width: 'auto' }} src={item.icon} />}
+                avatar={<img style={{ height: '130px', width: 'auto' }} src={item.icon} />}
                 title={<span>{item.title}</span>}
                 description={item.description}
               />

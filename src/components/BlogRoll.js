@@ -1,27 +1,35 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link, graphql, StaticQuery } from 'gatsby'
+import { Card, Icon, Button, Avatar, Row, Col, Divider } from 'antd';
+import StackGrid from "react-stack-grid";
+import sizeMe from 'react-sizeme';
 import PreviewCompatibleImage from './PreviewCompatibleImage'
+import appsLogo from '../img/apps.svg'
+
+const { Meta } = Card;
 
 class BlogRoll extends React.Component {
   render() {
     const { data } = this.props
     const { edges: posts } = data.allMarkdownRemark
+    const { 
+      size: { 
+        width
+      } 
+    } = this.props;
 
     return (
       <div className="columns is-multiline">
-        {posts &&
-          posts.map(({ node: post }) => (
-            <div className="is-parent column is-6" key={post.id}>
-              <article
-                className={`blog-list-item tile is-child box notification ${
-                  post.frontmatter.featuredpost ? 'is-featured' : ''
-                }`}
-              >
-                <header>
-                  {post.frontmatter.featuredimage ? (
-                    <div className="featured-thumbnail">
-                      <PreviewCompatibleImage
+        <StackGrid        
+        columnWidth={width <= 375 ? '100%' : '33.33%'}
+      >
+      {posts &&
+        posts.map(({ node: post }) => (
+          <div key={post.id}>
+            <Card style={{ marginBottom: '2rem', width: 300 }}
+             cover={
+              <PreviewCompatibleImage
                         imageInfo={{
                           image: post.frontmatter.featuredimage,
                           alt: `featured image thumbnail for post ${
@@ -29,32 +37,19 @@ class BlogRoll extends React.Component {
                           }`,
                         }}
                       />
-                    </div>
-                  ) : null}
-                  <p className="post-meta">
-                    <Link
-                      className="title has-text-primary is-size-4"
-                      to={post.fields.slug}
-                    >
-                      {post.frontmatter.title}
-                    </Link>
-                    <span> &bull; </span>
-                    <span className="subtitle is-size-5 is-block">
-                      {post.frontmatter.date}
-                    </span>
-                  </p>
-                </header>
-                <p>
-                  {post.excerpt}
-                  <br />
-                  <br />
-                  <Link className="button" to={post.fields.slug}>
-                    Keep Reading →
-                  </Link>
-                </p>
-              </article>
-            </div>
-          ))}
+            }
+             actions={[<Link to={post.fields.slug}>Read More</Link>]}
+            >
+              <Meta                
+                title={post.frontmatter.title}
+                description={post.excerpt}
+              />  
+              <Divider />
+              <small style={{opacity: 0.5}}>by <Avatar src={appsLogo} />CICT Admin | {post.frontmatter.date} </small>                       
+            </Card>
+          </div>
+        ))}
+      </StackGrid>                
       </div>
     )
   }
@@ -67,6 +62,8 @@ BlogRoll.propTypes = {
     }),
   }),
 }
+
+const BlogRollRender = sizeMe()(BlogRoll)
 
 export default () => (
   <StaticQuery
@@ -101,6 +98,6 @@ export default () => (
         }
       }
     `}
-    render={(data, count) => <BlogRoll data={data} count={count} />}
+    render={(data, count) => <BlogRollRender data={data} count={count} />}
   />
 )
