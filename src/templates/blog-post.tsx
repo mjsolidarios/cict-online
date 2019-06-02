@@ -5,6 +5,9 @@ import Helmet from 'react-helmet'
 import { graphql, Link } from 'gatsby'
 import Layout from '../components/Layout'
 import Content, { HTMLContent } from '../components/Content'
+import { Tag, Typography, Breadcrumb } from 'antd';
+
+const { Title } = Typography
 
 export const BlogPostTemplate = ({
   content,
@@ -22,23 +25,29 @@ export const BlogPostTemplate = ({
       <div className="container content">
         <div className="columns">
           <div className="column is-10 is-offset-1">
-            <h1 className="title is-size-2 has-text-weight-bold is-bold-light">
+            <Breadcrumb style={{marginBottom: '2rem'}}>
+              <Breadcrumb.Item>
+              <a href="/">Home</a>
+              </Breadcrumb.Item>
+              <Breadcrumb.Item>
+                <a href="/blog">Updates</a>
+              </Breadcrumb.Item>
+              <Breadcrumb.Item>{title}</Breadcrumb.Item>
+            </Breadcrumb>
+            <Title level={3}>
               {title}
-            </h1>
+            </Title>
             <p>{description}</p>
             <PostContent content={content} />
-            {tags && tags.length ? (
+            {/* {tags && tags.length ? (
               <div style={{ marginTop: `4rem` }}>
-                <h4>Tags</h4>
-                <ul className="taglist">
+                <div className="taglist">
                   {tags.map(tag => (
-                    <li key={tag + `tag`}>
-                      <Link to={`/tags/${kebabCase(tag)}/`}>{tag}</Link>
-                    </li>
+                    <Tag><Link key={tag + `tag`} to={`/tags/${kebabCase(tag)}/`}>{tag}</Link></Tag>
                   ))}
-                </ul>
+                </div>
               </div>
-            ) : null}
+            ) : null} */}
           </div>
         </div>
       </div>
