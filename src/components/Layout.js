@@ -1,9 +1,13 @@
-import React from 'react'
-import Helmet from 'react-helmet'
-import Footer from '../components/Footer'
-import Navbar from '../components/Navbar'
-import './all.sass'
-import useSiteMetadata from './SiteMetadata'
+import { Layout } from 'antd';
+import 'antd/dist/antd.less';
+import '../app.less'
+import React from 'react';
+import Helmet from 'react-helmet';
+import Footer from '../components/Footer';
+import Navbar from '../components/Navbar';
+import useSiteMetadata from './SiteMetadata';
+
+const { Header } = Layout;
 
 const TemplateWrapper = ({ children }) => {
   const { title, description } = useSiteMetadata()
@@ -42,11 +46,13 @@ const TemplateWrapper = ({ children }) => {
         <meta property="og:type" content="business.business" />
         <meta property="og:title" content={title} />
         <meta property="og:url" content="/" />
-        <meta property="og:image" content="/img/og-image.jpg" />
+        <meta property="og:image" content="/img/og-image.jpg" />        
       </Helmet>
+      <Layout className="layout">
       <Navbar />
       <div>{children}</div>
       <Footer />
+      </Layout>
     </div>
   )
 }
