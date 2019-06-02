@@ -1,4 +1,4 @@
-import { Button, Typography, Divider, Row, Col, List, Avatar } from 'antd';
+import { Button, Typography, Divider, Row, Col, List, Avatar, Alert, Icon } from 'antd';
 import { graphql } from 'gatsby';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -180,6 +180,13 @@ export const IndexPageTemplate = ({
     <div style={{ margin: '0 1rem' }}>
       <div style={{ padding: '2rem 1rem' }}>
         {/* <img style={{ width: 'auto', height: '150px', margin: '1rem auto' }} src={collegeLogo} />         */}
+        <Alert
+        style={{marginBottom: '1rem'}}
+        description={<span>This website is still under heavy development. Please help us improve by contributing to the <a href="https://github.com/wvsu-cict-code/cict-online" target="_blank"><Icon type="github" /> source code</a> or by reporting issues.</span>}
+      message="Hello Stranger! It's been a while."
+      type="info"
+      closable
+    />
         <Title level={2}><Typist cursor={cursorOptions}>{`> ${heading}`}</Typist></Title>
         <p>{subheading}</p>
         <p>{goal}</p>
